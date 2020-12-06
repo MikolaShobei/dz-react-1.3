@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, {Component} from 'react';
+import {carsAndDrivers} from './dataBase/carsAndDrivers'
+import CarsAndDriversComponents from './components/carsAndDriversComponents'
+class App extends Component {
+    render() {
+        return (
+            <div>
+                {
+                    carsAndDrivers.map((user, index) => {
+                        let clsK = index % 2 ? 'skyblue' : 'yellow'
+                        return (<CarsAndDriversComponents
+                            item={user}
+                            cls={clsK}
+                            key={index}
+                            />)
+                    })
+                }
+            </div>
+        );
+    }
 }
 
 export default App;
